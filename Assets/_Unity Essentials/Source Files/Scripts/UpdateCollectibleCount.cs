@@ -6,6 +6,9 @@ public class UpdateCollectibleCount : MonoBehaviour
 {
     private TextMeshProUGUI collectibleText; // Reference to the TextMeshProUGUI component
 
+
+    public GameObject winParticleVfx;
+
     void Start()
     {
         collectibleText = GetComponent<TextMeshProUGUI>();
@@ -42,5 +45,10 @@ public class UpdateCollectibleCount : MonoBehaviour
 
         // Update the collectible count display
         collectibleText.text = $"Collectibles remaining: {totalCollectibles}";
+
+        if(totalCollectibles<=0)
+        {
+            winParticleVfx.gameObject.SetActive(true);
+        }
     }
 }
